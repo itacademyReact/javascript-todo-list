@@ -25,9 +25,17 @@ function addListAfterClick() {
   }
 }
 
+function addListAfterKeypress(event) {
+  if (input.value.length > 0 && event.which == 13) {
+    createListElement();
+  }
+}
+
 function createListElement() {
   // Crear elemento, nuevo item
   var li = document.createElement('li');
+  // Añadimos clase
+  li.className = "list-group-item";
   // Enganchamos el texto
   li.appendChild(document.createTextNode(input.value));
   // Añadimos el elemento en el ul
@@ -36,3 +44,4 @@ function createListElement() {
 
 // EVENTS
 enterButton.addEventListener("click", addListAfterClick);
+input.addEventListener("keypress", addListAfterKeypress);
